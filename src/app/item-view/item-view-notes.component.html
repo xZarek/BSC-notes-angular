@@ -1,3 +1,20 @@
 <div>
-    Seznam poznámek
+    <label>Poznámka
+        <input #noteName />
+    </label>
+    <!-- (click) passes input value to add() and then clears the input -->
+    <button (click)="add(noteName.value); noteName.value=''">
+        add
+    </button>
 </div>
+
+<ul class="notes">
+    <li *ngFor="let note of notes">
+        <a (click)="getDetail(note)">
+            <span class="badge">{{ note.id || -1 }}</span>
+            <span>{{note.title}}</span>
+            <!-- <input *ngIf="note===editNote" [(ngModel)]="note.title" (blur)="update()" (keyup.enter)="update()"> -->
+        </a>
+        <button class="delete" title="delete note" (click)="delete(note)">x</button>
+    </li>
+</ul>
