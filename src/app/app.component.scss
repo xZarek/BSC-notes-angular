@@ -1,0 +1,26 @@
+main {
+    height: 100vh;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    margin-left: 2%;
+    margin-right: 2%;  
+  }
+    
+  .container-fluid {
+    padding: 0 0 0 0;
+  }
+    
+  #progressBar {
+    top: 0;
+    z-index: 9999;
+    position: fixed;
+    left: 0px;
+  }
+  
+  a.button-collapse.hidden-nav-button-collapse {
+    position: absolute;
+    top: 24px;
+    left: 20px;
+  }

@@ -1,16 +1,22 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRouting } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ItemViewNotesComponent } from './item-view/item-view-notes.component';
+import { DetailViewNoteComponent } from './detail-view/detail-view-note.component';
+import { PageNotFoundComponent, } from './shared/components/page-not-found.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PageNotFoundComponent,
+    DetailViewNoteComponent,
+    ItemViewNotesComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRouting
   ],
   providers: [],
   bootstrap: [AppComponent]
