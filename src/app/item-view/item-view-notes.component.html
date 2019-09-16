@@ -1,21 +1,21 @@
-<div>
-    <div>{{'YES' | translate}}</div>
-    <label>Poznámka
-        <input #noteName />
-    </label>
-    <!-- (click) passes input value to add() and then clears the input -->
-    <button (click)="add(noteName.value); noteName.value=''">
-        add
-    </button>
-</div>
+<div class="wrapper-item">
+    <div class="input-group mb-3">
+        <input type="text" #noteName class="form-control" placeholder="{{'ITEM.TITLE' | translate}}"
+            aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+            <button class="btn btn-outline-primary btn-sm" type="button"
+                (click)="add(noteName.value)">{{'ITEM.ADD' | translate}}</button>
+        </div>
+    </div>
 
-<ul class="notes">
-    <li *ngFor="let note of notes">
-        <a (click)="getDetail(note)">
-            <span class="badge">{{ note.id || -1 }}</span>
-            <span>{{note.title}}</span>
-            <!-- <input *ngIf="note===editNote" [(ngModel)]="note.title" (blur)="update()" (keyup.enter)="update()"> -->
-        </a>
-        <button class="delete" title="delete note" (click)="delete(note)">x</button>
-    </li>
-</ul>
+    <ul class=" notes">
+        <li *ngFor="let note of notes">
+            <a (click)="getDetail(note)" style="cursor: pointer">
+                <span class="badge">{{ note.id || -1 }}</span>
+                <span>{{note.title}}</span>
+            </a>
+            <button type="button" class="btn btn-outline-danger btn-sm ml-2"
+                (click)="delete(note)">{{'ITEM.DELETE' | translate}}</button>
+        </li>
+    </ul>
+</div>

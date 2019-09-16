@@ -1,6 +1,5 @@
 import { Component, Input, OnInit, Output, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-//import { TranslateService } from '@ngx-translate/core';
+import { ActivatedRoute } from '@angular/router';
 import { Note } from '../item-view/note';
 import { NotesService } from '../item-view/notes.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -19,9 +18,7 @@ export class DetailViewNoteComponent implements OnInit, OnDestroy {
     public cuForm: FormGroup;
     editNote: Note;
     constructor(
-        private router: Router,
         private route: ActivatedRoute,
-        // public translate: TranslateService,
         private notesService: NotesService,
         private fb: FormBuilder,
         private _location: Location

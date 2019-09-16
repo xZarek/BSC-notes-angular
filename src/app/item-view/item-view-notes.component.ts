@@ -1,8 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router, NavigationExtras } from '@angular/router';
+import { Router } from '@angular/router';
 import { Note } from './note';
 import { NotesService } from './notes.service';
-import { TranslateService } from '@ngx-translate/core';
 import { DetailViewNoteComponent } from '../detail-view/detail-view-note.component';
 
 @Component({
@@ -20,13 +19,8 @@ export class ItemViewNotesComponent implements OnInit {
     constructor(
         private router: Router,
         private notesService: NotesService,
-        translate: TranslateService,
     ) {
-        // this language will be used as a fallback when a translation isn't found in the current language
-        translate.setDefaultLang('en');
 
-        // the lang to use, if the lang isn't available, it will use the current loader to get them
-        translate.use('en');
     }
 
     ngOnInit() {
@@ -60,36 +54,11 @@ export class ItemViewNotesComponent implements OnInit {
 
     getDetail(note) {
         this.router.navigate(['/note-detail'], { queryParams: { id: note.id } });
-        //console.log('Reference: ', this.detailNoteRef);
 
     }
 
     edit(note: Note) {
         this.editNote = note;
     }
-    /*
-ngOnInit() {
-    this.loadAllTodoList();
-}
-
-loadAllTodoList() {
-    // window.fetch('http://private-9aad-note10.apiary-mock.com').then(r => r.json()).then(j => { console.log(j); });
-}
-
-onClickEditTodoDetail(id) {
-    this.router.navigate(['/todo-detail'], { queryParams: { id: id } });
-}
-
-onClickAddTodo() {
-    this.router.navigate(['/todo-detail']);
-}
-
-onClickItem(id) {
-    this.router.navigate(['/note-detail'], { queryParams: { id: id } });
-}
-
-onClickTodoDelete(id) {
-    this.loadAllTodoList();
-}*/
 }
 

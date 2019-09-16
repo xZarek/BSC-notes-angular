@@ -1,7 +1,5 @@
-import { AfterViewInit, Component, Renderer2, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { AppModule } from './app.module';
 
 
 @Component({
@@ -11,19 +9,16 @@ import { AppModule } from './app.module';
 })
 
 export class AppComponent {
-
-
-  public fixedSidenav = true;
-  public pBar = false;
-  title = 'bsc-notes-app';
   constructor(
     public translate: TranslateService,
-    private renderer: Renderer2,
 
   ) {
-  }
-  selectedLanguage() {
-    // console.log(this.selectedLevel)
+    // this language will be used as a fallback when a translation isn't found in the current language
+    translate.setDefaultLang('en');
+
+    // the lang to use, if the lang isn't available, it will use the current loader to get them
+    translate.use('en');
   }
 }
+
 

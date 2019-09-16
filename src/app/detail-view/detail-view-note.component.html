@@ -1,15 +1,13 @@
-<div>
+<div class="wrapper-detail">
     <form [formGroup]="cuForm" (ngSubmit)="edit()">
-        <textarea name="areaName" formControlName="areaName" id="areaName" rows="3" cols="50"
+        <textarea name="areaName" formControlName="areaName" id="areaName" rows="3" cols="67"
             placeholder="Title"></textarea>
-        <div class="modal-footer pull-right">
-            <button type="button" (click)="goBack()">back</button>
-            <button outline="true" type="submit" mdbBtn color="success" class="waves-effect" mdbWavesEffect><i
-                    style="margin-right: 5px;" class="fas fa-save"></i>
-                save
-            </button>
+        <div class="detail-footer">
+            <button type="button" class="btn btn-outline-dark btn-sm"
+                (click)="goBack()">{{'DETAIL.BACK' | translate}}</button>
+
+            <button type="button" class="btn btn-outline-success btn-sm" type="submit"
+                color="success">{{'DETAIL.SAVE' | translate}}</button>
         </div>
     </form>
-    detail
-    <div>{{this.title}}</div>
 </div>

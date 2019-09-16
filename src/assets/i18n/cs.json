@@ -1,4 +1,10 @@
 {
     "YES": "Soubor",
-    "LANGUAGE": "Jazyk"
+    "LANGUAGE": "Čeština",
+    "HEADER.TITLE": "BSC poznámky",
+    "ITEM.TITLE": "Poznámka",
+    "ITEM.ADD": "přidat",
+    "ITEM.DELETE": "smazat",
+    "DETAIL.BACK": "zpět",
+    "DETAIL.SAVE": "uložit"
 }

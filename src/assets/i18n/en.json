@@ -1,4 +1,10 @@
 {
     "YES": "File",
-    "LANGUAGE": "Language"
+    "LANGUAGE": "English",
+    "HEADER.TITLE": "BSC notes",
+    "ITEM.TITLE": "Note",
+    "ITEM.ADD": "add",
+    "ITEM.DELETE": "delete",
+    "DETAIL.BACK": "back",
+    "DETAIL.SAVE": "save"
 }
