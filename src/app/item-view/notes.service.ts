@@ -34,6 +34,14 @@ export class NotesService {
                 catchError(this.handleError('getNotes', []))
             );
     }
+
+    /** GET notes from the server */
+    getNoteTitle(id: number): Observable<any> {
+        return this.http.get<Note[]>(`${this.notesUrl}/notes/${id}`)
+            .pipe(
+                catchError(this.handleError('getNote', []))
+            );
+    }
     //////// Save methods //////////
 
     /** POST: add a new note to the database */
@@ -55,13 +63,13 @@ export class NotesService {
     }
 
     /** PUT: update the note on the server. Returns the updated note upon success. */
-    updateNote(id: number, note: Note): Observable<Note> {
+    updateNote(id: number, title: string): Observable<any> {
         httpOptions.headers =
             httpOptions.headers.set('Authorization', 'my-new-auth-token');
 
-        return this.http.put<Note>(`${this.notesUrl}/notes/${id}`, note, httpOptions)
+        return this.http.put(`${this.notesUrl}/notes/${id}`, title, httpOptions)
             .pipe(
-                catchError(this.handleError('updateNote', note))
+                catchError(this.handleError('updateNote', title))
             );
     }
 }

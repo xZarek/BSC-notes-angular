@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, Renderer2, ViewChild } from '@angular/core';
-
+import { TranslateService } from '@ngx-translate/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app.module';
 
@@ -17,11 +17,13 @@ export class AppComponent {
   public pBar = false;
   title = 'bsc-notes-app';
   constructor(
-    //public translate: TranslateService,
+    public translate: TranslateService,
     private renderer: Renderer2,
 
   ) {
-
+  }
+  selectedLanguage() {
+    // console.log(this.selectedLevel)
   }
 }
 

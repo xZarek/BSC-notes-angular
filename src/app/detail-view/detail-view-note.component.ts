@@ -1,10 +1,10 @@
 import { Component, Input, OnInit, Output, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 //import { TranslateService } from '@ngx-translate/core';
-import { DataStorage } from '../item-view/data.provider';
+import { Note } from '../item-view/note';
 import { NotesService } from '../item-view/notes.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Note } from '../item-view/note';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -14,29 +14,48 @@ import { Note } from '../item-view/note';
     styleUrls: ['./detail-view-note.component.scss']
 })
 export class DetailViewNoteComponent implements OnInit, OnDestroy {
+    note: Note[];
+    title: string;
     public cuForm: FormGroup;
     editNote: Note;
     constructor(
         private router: Router,
+        private route: ActivatedRoute,
         // public translate: TranslateService,
         private notesService: NotesService,
-        private _data: DataStorage,
         private fb: FormBuilder,
+        private _location: Location
 
     ) {
-        console.log('STANO', JSON.stringify(this._data.data.title));
         this.cuForm = this.fb.group({
-            'areaName': [this._data.data.title, [Validators.required]],
+            'areaName': ['', [Validators.required]],
         });
     }
 
     ngOnInit() {
+        this.getNotes(this.route.snapshot.queryParams.id);
 
     }
-    edit(note: Note): void {
-        console.log('update')
-        this.notesService.updateNote(1, note)
-            .subscribe(notes => (note = notes));
+
+    getNotes(noteId): void {
+        this.notesService.getNoteTitle(noteId)
+            .subscribe(notes => {
+                this.title = notes.title,
+                    this.cuForm.get('areaName').setValue(notes.title);
+            });
+    }
+
+    edit(): void {
+        console.log('Id v routu', this.route.snapshot.queryParams.id)
+        console.log('update', this.cuForm.get('areaName').value)
+        this.notesService.updateNote(this.route.snapshot.queryParams.id, this.cuForm.get('areaName').value)
+            .subscribe(notes => (
+                this.cuForm.get('areaName').setValue(notes.title))
+            );
+    }
+    goBack(): void {
+        console.log('going back')
+        this._location.back();
     }
     ngOnDestroy() {
         // this.modalAction.next(this.modalData);

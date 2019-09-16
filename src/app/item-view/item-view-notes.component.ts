@@ -2,8 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { Note } from './note';
 import { NotesService } from './notes.service';
+import { TranslateService } from '@ngx-translate/core';
 import { DetailViewNoteComponent } from '../detail-view/detail-view-note.component';
-import { DataStorage } from './data.provider';
 
 @Component({
     selector: 'app-item-view-notes',
@@ -20,8 +20,14 @@ export class ItemViewNotesComponent implements OnInit {
     constructor(
         private router: Router,
         private notesService: NotesService,
-        private _data: DataStorage,
-    ) { }
+        translate: TranslateService,
+    ) {
+        // this language will be used as a fallback when a translation isn't found in the current language
+        translate.setDefaultLang('en');
+
+        // the lang to use, if the lang isn't available, it will use the current loader to get them
+        translate.use('en');
+    }
 
     ngOnInit() {
         this.getNotes();
@@ -53,11 +59,6 @@ export class ItemViewNotesComponent implements OnInit {
     }
 
     getDetail(note) {
-        console.log('Přejdi na tuhle stránku: ', note);
-        this._data.data = {
-            title: note.title,
-        }
-
         this.router.navigate(['/note-detail'], { queryParams: { id: note.id } });
         //console.log('Reference: ', this.detailNoteRef);
 

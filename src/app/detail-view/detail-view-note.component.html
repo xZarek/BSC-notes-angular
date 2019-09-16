@@ -3,6 +3,7 @@
         <textarea name="areaName" formControlName="areaName" id="areaName" rows="3" cols="50"
             placeholder="Title"></textarea>
         <div class="modal-footer pull-right">
+            <button type="button" (click)="goBack()">back</button>
             <button outline="true" type="submit" mdbBtn color="success" class="waves-effect" mdbWavesEffect><i
                     style="margin-right: 5px;" class="fas fa-save"></i>
                 save
@@ -10,5 +11,5 @@
         </div>
     </form>
     detail
-    <div>{{this._data.data.title}}</div>
+    <div>{{this.title}}</div>
 </div>

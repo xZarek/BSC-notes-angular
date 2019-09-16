@@ -1,5 +1,28 @@
 <div>
 
   <h3>BSC Notes application</h3>
+  <div class="form-group">
+    <label for="status">{{'LANGUAGE' | translate}}</label>
+    <select class="form-control" name="status" (change)="selectedLanguage()" [(ngModel)]="selectedLanguage">
+      <option [value]="1" [selected]="selectedLanguage ==1">EN</option>
+      <option [value]="0" [selected]="selectedLanguage ==0">CS</option>
+    </select>
+  </div>
+
+  <div class="dropdown" dropdown>
+    <button dropdownToggle class="btn btn-primary btn-sm dropdown-toggle waves-light" type="button" mdbWavesEffect>
+      {{translate.currentLang}}
+    </button>
+    <div class="dropdown-menu dropdown-primary">
+      <a class="dropdown-item" (click)="translate.use('en')">EN</a>
+      <a class="dropdown-item" (click)="translate.use('cs')">CS</a>
+    </div>
+  </div>
+  <div class="dropdown-content">
+    <a (click)="translate.use('en')">EN</a>
+    <a (click)="translate.use('cs')">CS</a>
+  </div>
+  <alert type="success">hello</alert>
+  <button class="btn btn-primary">Test Button</button>
   <router-outlet></router-outlet>
 </div>
