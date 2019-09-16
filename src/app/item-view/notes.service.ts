@@ -46,7 +46,6 @@ export class NotesService {
 
     /** POST: add a new note to the database */
     addNote(note: Note): Observable<Note> {
-        console.log('Note v add', note)
         return this.http.post<Note>(`${this.notesUrl}/notes`, note, httpOptions)
             .pipe(
                 catchError(this.handleError('addNote', note))

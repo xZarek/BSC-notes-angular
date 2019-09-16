@@ -1,5 +1,6 @@
-import { Component, Input, OnInit, Output, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { Note } from '../item-view/note';
 import { NotesService } from '../item-view/notes.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -19,6 +20,7 @@ export class DetailViewNoteComponent implements OnInit, OnDestroy {
     editNote: Note;
     constructor(
         private route: ActivatedRoute,
+        public translate: TranslateService,
         private notesService: NotesService,
         private fb: FormBuilder,
         private _location: Location
@@ -43,15 +45,12 @@ export class DetailViewNoteComponent implements OnInit, OnDestroy {
     }
 
     edit(): void {
-        console.log('Id v routu', this.route.snapshot.queryParams.id)
-        console.log('update', this.cuForm.get('areaName').value)
         this.notesService.updateNote(this.route.snapshot.queryParams.id, this.cuForm.get('areaName').value)
             .subscribe(notes => (
                 this.cuForm.get('areaName').setValue(notes.title))
             );
     }
     goBack(): void {
-        console.log('going back')
         this._location.back();
     }
     ngOnDestroy() {

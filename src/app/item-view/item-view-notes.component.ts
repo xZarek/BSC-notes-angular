@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { Note } from './note';
 import { NotesService } from './notes.service';
 import { DetailViewNoteComponent } from '../detail-view/detail-view-note.component';
@@ -19,6 +20,8 @@ export class ItemViewNotesComponent implements OnInit {
     constructor(
         private router: Router,
         private notesService: NotesService,
+        public translate: TranslateService,
+
     ) {
 
     }

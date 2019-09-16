@@ -14,6 +14,7 @@ import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-transla
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { LOCATION_INITIALIZED } from '@angular/common';
 
+
 // initializer for translate to make sure sync translations are ready
 export function appInitializerFactory(
   translate: TranslateService,
@@ -47,6 +48,7 @@ export function appInitializerFactory(
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
+
 }
 
 @NgModule({
