@@ -22,7 +22,7 @@
     "@ngx-translate/core": "^11.0.1",
     "@ngx-translate/http-loader": "^4.0.0",
     "bootstrap": "^4.3.1",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "mdbootstrap": "^4.8.9",
     "ng-uikit": "^0.1.6",
     "ngx-bootstrap": "^5.1.2",
